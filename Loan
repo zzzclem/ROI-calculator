@@ -1,0 +1,45 @@
+def calculate_roi():
+    purchase_price = float(input("\nEnter Purchase price of the property:  "))
+    monthly_rental_income = float(input("Enter Monthly rental income:     "))
+    annual_operating_expenses = float(input("Enter Annual operating expenses:   "))
+
+    monthly_operating_expenses = annual_operating_expenses / 12
+    net_income = (monthly_rental_income - monthly_operating_expenses) * 12
+    roi = (net_income / purchase_price) * 100
+
+    print(f"\nThe ROI for the commercial property is {roi:.2f}%")
+
+def loan_calculator():
+    # Loan parameters
+    loan_amount = float(input("\nEnter the LOAN amount:    "))
+    interest_rate = float(input("Enter the INTEREST rate (percentage):  "))
+    loan_term = int(input("Enter the LOAN term (years):     "))
+
+    # Calculate monthly interest rate and payment
+    monthly_interest_rate = interest_rate / (12 * 100)
+    loan_payment = loan_amount * (monthly_interest_rate * (1 + monthly_interest_rate) ** (loan_term * 12)) / ((1 + monthly_interest_rate) ** (loan_term * 12) - 1)
+    total_payment = loan_payment * loan_term * 12
+
+    print(f"\nThe monthly loan payment is RM      {loan_payment:.2f}")
+    print(f"The total payment for the loan is RM       {total_payment:.2f}")
+
+
+def main_menu():
+    while True:
+        print("\n1. Calculate ROI")
+        print("2. Calculate Loan Payment")
+        print("3. Exit")
+        choice = input("\nEnter your choice: ")
+
+        if choice == '1':
+            calculate_roi()
+        elif choice == '2':
+            loan_calculator()
+        elif choice == '3':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main_menu()
